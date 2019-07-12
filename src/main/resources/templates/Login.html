@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<title>ログイン画面</title>
+</head>
+<body>
+	<div class="container">
+		<form>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th class="text-center" scope="col"><h3>ログイン</h3></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row"><br>
+							<div class="form-group">
+								<div class="row">
+									<div class="col"></div>
+									<div class="col-9">
+										<label for="exampleInputEmail1">LOGIN ID</label> <input
+											type="text" class="form-control">
+									</div>
+									<div class="col"></div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col"></div>
+									<div class="col-9">
+										<label for="exampleInputPassword1">PASSWORD</label> <input
+											type="password" class="form-control">
+									</div>
+									<div class="col"></div>
+								</div>
+							</div>
+							<div class="row text-center" >
+								<div class="col"></div>
+								<div class="col-5">
+									<button type="submit" class="btn btn-danger btn-block">LOGIN</button>
+								</div>
+								<div class="col"></div>
+							</div></th>
+					</tr>
+					<tr>
+						<th scope="row">
+							<div class="text-center">
+								<br>新規登録<br> <br>
+							</div>
+							<div class="row text-center">
+								<div class="col"></div>
+								<div class="col-5">
+									<a class="btn btn-primary btn-block"
+										th:href="@{/entry}" role="button">新規登録</a>
+								</div>
+								<div class="col"></div>
+							</div> <br></th>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+</body>
+</html>
