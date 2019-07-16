@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="container">
-		<form>
+		<form th:action="@{/sign_in" method="post">
 			<table class="table table-bordered">
 				<thead>
 					<tr>
@@ -25,7 +25,7 @@
 									<div class="col"></div>
 									<div class="col-9">
 										<label for="exampleInputEmail1">LOGIN ID</label> <input
-											type="text" class="form-control">
+											type="text" name="login_id" class="form-control">
 									</div>
 									<div class="col"></div>
 								</div>
@@ -35,15 +35,16 @@
 									<div class="col"></div>
 									<div class="col-9">
 										<label for="exampleInputPassword1">PASSWORD</label> <input
-											type="password" class="form-control">
+											type="password" name="password" class="form-control">
 									</div>
 									<div class="col"></div>
 								</div>
 							</div>
-							<div class="row text-center" >
+							<div class="row text-center">
 								<div class="col"></div>
 								<div class="col-5">
-									<button type="submit" class="btn btn-danger btn-block">LOGIN</button>
+									<button type="submit" class="btn btn-danger btn-block"
+										value="Login">LOGIN</button>
 								</div>
 								<div class="col"></div>
 							</div></th>
@@ -56,11 +57,12 @@
 							<div class="row text-center">
 								<div class="col"></div>
 								<div class="col-5">
-									<a class="btn btn-primary btn-block"
-										th:href="@{/entry}" role="button">新規登録</a>
+									<a class="btn btn-primary btn-block" th:href="@{/entry}"
+										role="button">新規登録</a>
 								</div>
 								<div class="col"></div>
-							</div> <br></th>
+							</div> <br>
+						</th>
 					</tr>
 				</tbody>
 			</table>

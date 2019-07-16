@@ -1,10 +1,14 @@
 package com.example.demo.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.security.core.GrantedAuthority;
 
 @Entity
 @Table(name = "user")
@@ -17,6 +21,9 @@ public class User {
 	private String password;
 	private String name;
 
+	public User(String login_id2, String encode, List<GrantedAuthority> grantList) {
+
+	}
 	public Long getId() {
 		return id;
 	}

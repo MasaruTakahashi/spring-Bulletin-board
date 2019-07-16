@@ -6,8 +6,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.entity.User;
 
+
 @Repository
 @Transactional
 public interface UserRepository extends JpaRepository<User, Long>{
 
+	public User findByLogin_id(String login_id);
 }
