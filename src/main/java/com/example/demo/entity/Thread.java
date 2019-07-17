@@ -16,8 +16,8 @@ public class Thread {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String name;
-	private Date create_date;
-	private int user_id;
+	private Date createDate;
+	private int userId;
 
 	public Long getId() {
 		return id;
@@ -32,16 +32,16 @@ public class Thread {
 		this.name = name;
 	}
 	public Date getCreate_date() {
-		return create_date;
+		return createDate;
 	}
-	public void setCreate_date(Date create_date) {
-		this.create_date = create_date;
+	public void setCreate_date(Date createDate) {
+		this.createDate = createDate;
 	}
 	public int getUser_id() {
-		return user_id;
+		return userId;
 	}
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUser_id(int userId) {
+		this.userId = userId;
 	}
 
 

@@ -10,7 +10,7 @@ public class UserForm implements Serializable{
 
 	@NotEmpty
 	@Pattern(regexp = "[a-zA-Z0-9")
-	private String login_id;
+	private String loginId;
 	@NotEmpty
 	@Size(min = 6)
 	@Pattern(regexp = "[a-zA-Z0-9")

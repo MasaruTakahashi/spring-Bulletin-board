@@ -21,12 +21,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	UserRepository userRe;
 
 	@Override
-	public UserDetails loadUserByUsername(String login_id) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String loginId) throws UsernameNotFoundException {
 
-		User user = userRe.findByLogin_id(login_id);
+		User user = userRe.findByLoginId(loginId);
 
 		if (user == null) {
-			throw new UsernameNotFoundException("User" + login_id + "was not found in the database");
+			throw new UsernameNotFoundException("User" + loginId + "was not found in the database");
 		}
 
 		List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
@@ -35,7 +35,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-		UserDetails userDetails = (UserDetails) new User(user.getLogin_id(), encoder.encode(user.getPassword()),
+		UserDetails userDetails = (UserDetails) new User(user.getLoginId(), encoder.encode(user.getPassword()),
 				grantList);
 
 		return userDetails;

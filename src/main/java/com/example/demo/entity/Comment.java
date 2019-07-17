@@ -15,10 +15,10 @@ public class Comment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private String user_id;
+	private String userId;
 	private String detail;
 	private Date create_date;
-	private int thred_id;
+	private int thredId;
 
 	public Long getId() {
 		return id;
@@ -27,10 +27,10 @@ public class Comment {
 		this.id = id;
 	}
 	public String getUser_id() {
-		return user_id;
+		return userId;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setUser_id(String userId) {
+		this.userId = userId;
 	}
 	public String getDetail() {
 		return detail;
@@ -45,10 +45,10 @@ public class Comment {
 		this.create_date = create_date;
 	}
 	public int getThred_id() {
-		return thred_id;
+		return thredId;
 	}
-	public void setThred_id(int thred_id) {
-		this.thred_id = thred_id;
+	public void setThred_id(int thredId) {
+		this.thredId = thredId;
 	}
 
 

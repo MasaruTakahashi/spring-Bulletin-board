@@ -18,7 +18,7 @@ public class ThreadContoroller {
 	@Autowired
 	ThreadRepository thrreadRe;
 
-	@RequestMapping("/thread")
+	@RequestMapping("/threadList")
 	private ModelAndView threadGet(ModelAndView mav) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 

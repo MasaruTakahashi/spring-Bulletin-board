@@ -11,5 +11,5 @@ import com.example.demo.entity.User;
 @Transactional
 public interface UserRepository extends JpaRepository<User, Long>{
 
-	public User findByLogin_id(String login_id);
+	public User findByLoginId(String loginId);
 }

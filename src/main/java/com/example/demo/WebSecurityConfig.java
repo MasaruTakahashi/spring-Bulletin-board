@@ -9,12 +9,16 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+
+
+
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private UserDetailsServiceImpl userDetailsService;
+	UserDetailsServiceImpl userDetailsService;
 
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
@@ -23,34 +27,36 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	}
 
 	@Override
-	public void configure(WebSecurity web)throws Exception{
-		web.ignoring().antMatchers("/images/**","/css/**","/javascript/**");
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().antMatchers("/images/**", "/css/**", "/javascript/**");
 	}
 
 	@Override
-	public void configure(HttpSecurity http)throws Exception{
+	public void configure(HttpSecurity http) throws Exception {
 		http
-		.authorizeRequests()
-		.anyRequest().authenticated().and()
-		.formLogin()
-		.loginPage("/login")
-		.loginProcessingUrl("/userEntry")
-		.usernameParameter("login_id")
-		.passwordParameter("password")
-		.successForwardUrl("/threadList")
-		.failureUrl("/login?error")
-		.permitAll()
-		.and()
-		.logout()
-		.logoutUrl("/logout")
-		.logoutSuccessUrl("/login?logout")
-		.permitAll();
+				.authorizeRequests()
+				.antMatchers("/entry")
+				.permitAll()
+				.anyRequest().authenticated().and()
+				.formLogin()
+				.loginPage("/login")
+				.loginProcessingUrl("/login")
+				.usernameParameter("loginId")
+				.passwordParameter("password")
+				.successForwardUrl("/threadList")
+				.failureUrl("/login?error")
+				.permitAll()
+				.and()
+				.logout()
+				.logoutUrl("/logout")
+				.logoutSuccessUrl("/login?logout")
+				.permitAll();
 	}
 
 	@Autowired
-	public void configure(AuthenticationManagerBuilder auth)throws Exception{
+	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth
-		.inMemoryAuthentication()
-		.withUser("login_id").password("{noop}password").roles("user");
+				.inMemoryAuthentication()
+				.withUser("loginId").password("{noop}password").roles("USER");
 	}
 }

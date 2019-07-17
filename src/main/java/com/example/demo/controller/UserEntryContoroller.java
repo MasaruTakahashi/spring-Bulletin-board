@@ -9,9 +9,14 @@ import org.springframework.web.servlet.ModelAndView;
 public class UserEntryContoroller {
 
 	@RequestMapping(value = "/entry", method = RequestMethod.GET)
-	public ModelAndView userEntry(ModelAndView mav) {
-		mav.setViewName("UserEntry");
+	public ModelAndView entryGet(ModelAndView mav) {
+		mav.setViewName("userEntry");
 		return mav;
+	}
+
+	@RequestMapping(value = "/entry")
+	public ModelAndView entryPost() {
+
 	}
 
 }
