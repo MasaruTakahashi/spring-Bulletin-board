@@ -9,7 +9,7 @@ public class LoginContoroller {
 
 	@RequestMapping("/login")
 	public ModelAndView loginGet(ModelAndView mav) {
-		mav.setViewName("login");
+		mav.setViewName("Login");
 		return mav;
 	}
 }

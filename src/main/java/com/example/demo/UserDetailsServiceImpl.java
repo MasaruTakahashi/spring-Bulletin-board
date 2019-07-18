@@ -9,7 +9,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.User;
@@ -33,9 +32,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		GrantedAuthority authority = new SimpleGrantedAuthority("USER");
 		grantList.add(authority);
 
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-		UserDetails userDetails = (UserDetails) new User(user.getLoginId(), encoder.encode(user.getPassword()),
+
+		UserDetails userDetails = (UserDetails) new User(user.getLoginId(),user.getPassword(),
 				grantList);
 
 		return userDetails;

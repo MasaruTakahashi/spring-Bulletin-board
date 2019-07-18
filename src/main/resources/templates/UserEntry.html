@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="container">
-		<form>
+		<form th:action="@{/entry}" th:object="${userForm}" method="post">
 			<table class="table table-bordered">
 				<thead>
 					<tr>
@@ -24,8 +24,9 @@
 								<div class="row">
 									<div class="col"></div>
 									<div class="col-9">
-										<label for="loginId">LOGIN ID</label> <input type="text"
+										<label for="loginId">LOGIN ID</label> <input type="text" th:field="*{loginId}"
 											class="form-control">
+											<span th:if="${#fields.hasErrors('*{loginId}')}" th:errors="*{loginId}" class="text-danger"></span>
 									</div>
 									<div class="col"></div>
 								</div>
@@ -35,8 +36,9 @@
 								<div class="row">
 									<div class="col"></div>
 									<div class="col-9">
-										<label for="Password">PASSWORD</label> <input type="password"
+										<label for="Password">PASSWORD</label> <input type="password" th:field="*{password}"
 											class="form-control">
+											<span th:if="${#fields.hasErrors('*{password}')}" th:errors="*{password}" class="text-danger"></span>
 									</div>
 									<div class="col"></div>
 								</div>
@@ -47,7 +49,7 @@
 									<div class="col"></div>
 									<div class="col-9">
 										<label for="Password">PASSWORD(確認)</label> <input
-											type="password" class="form-control">
+											type="password" th:field="*{passwordCon}" class="form-control">
 									</div>
 									<div class="col"></div>
 								</div>
@@ -57,8 +59,9 @@
 								<div class="row">
 									<div class="col"></div>
 									<div class="col-9">
-										<label for="userName">NAME</label> <input type="text"
+										<label for="userName">NAME</label> <input type="text" th:field="*{name}"
 											class="form-control">
+											<span th:if="${#fields.hasErrors('*{name}')}" th:errors="*{name}" class="text-danger"></span>
 									</div>
 									<div class="col"></div>
 								</div>
@@ -67,9 +70,9 @@
 							<div class="row">
 								<div class="col"></div>
 								<div class="col-5">
-									<button type="submit" class="btn btn-primary btn-block">登録</button>
+									<input type="submit" class="btn btn-primary btn-block" value="登録">
 								</div>
-								<div class="col">
+								<div class="col"></div>
 							</div></th>
 					</tr>
 				</tbody>
