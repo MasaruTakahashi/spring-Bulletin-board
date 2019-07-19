@@ -7,10 +7,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.entity.Thread;
 import com.example.demo.repository.ThreadRepository;
+
+
+
 
 @Controller
 public class ThreadContoroller {
@@ -18,17 +22,23 @@ public class ThreadContoroller {
 	@Autowired
 	ThreadRepository thrreadRe;
 
-	@RequestMapping("/threadList")
-	private ModelAndView threadGet(ModelAndView mav) {
+	@RequestMapping(value = "/threadList",method = RequestMethod.GET)
+	public ModelAndView threadGet(ModelAndView mav) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-		String name = auth.getName();
-		mav.addObject("name",name);
+		mav.addObject("userinfo",auth);
+
 
 		List<Thread> threadList = thrreadRe.findAll();
 		mav.addObject("threadList",threadList);
-		mav.setViewName("thread");
+		mav.setViewName("ThreadList");
 		return mav;
 
 	}
+
+//	@RequestMapping(value = "/threadcreate")
+//	public ModelAndView createThread() {
+//		return null;
+//
+//	}
 }

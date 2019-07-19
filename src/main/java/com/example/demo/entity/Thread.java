@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,30 +21,53 @@ public class Thread {
 	private Date createDate;
 	private int userId;
 
+	@ManyToOne
+	@JoinColumn(name="userId", insertable = false, updatable = false)
+	private User user;
+
+	public Thread() {
+
+	}
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Date getCreate_date() {
+
+	public Date getCreateDate() {
 		return createDate;
 	}
-	public void setCreate_date(Date createDate) {
+
+	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	public int getUser_id() {
+
+	public int getUserId() {
 		return userId;
 	}
-	public void setUser_id(int userId) {
+
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 
+	public User getUser() {
+		return user;
+	}
 
-}
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	}
+

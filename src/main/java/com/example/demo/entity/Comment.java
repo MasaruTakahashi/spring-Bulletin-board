@@ -17,7 +17,7 @@ public class Comment {
 	private Long id;
 	private String userId;
 	private String detail;
-	private Date create_date;
+	private Date createDate;
 	private int thredId;
 
 	public Long getId() {
@@ -26,10 +26,10 @@ public class Comment {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getUser_id() {
+	public String getUserId() {
 		return userId;
 	}
-	public void setUser_id(String userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 	public String getDetail() {
@@ -38,16 +38,16 @@ public class Comment {
 	public void setDetail(String detail) {
 		this.detail = detail;
 	}
-	public Date getCreate_date() {
-		return create_date;
+	public Date getCreateDate() {
+		return createDate;
 	}
-	public void setCreate_date(Date create_date) {
-		this.create_date = create_date;
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
-	public int getThred_id() {
+	public int getThredId() {
 		return thredId;
 	}
-	public void setThred_id(int thredId) {
+	public void setThredId(int thredId) {
 		this.thredId = thredId;
 	}
 

@@ -10,14 +10,19 @@
 </head>
 <body>
 	<div class="container">
-	<br>
-	<input type="text" placeholder="スレッド名">
-	<input type="submit">スレッドを作る
+		<br>
+		<form th:action="@{/threadcreate}" th:object="${threadForm}"
+			method="post">
+			<input type="text" th:field="*{name}" placeholder="スレッド名"> <input
+				type="hidden" th:field="*{userId}" value="${userinfo.id}"> <input
+				type="submit" value="スレッドを作る">
+		</form>
 		<table class="table">
 			<tbody>
-				<tr th：eath>
-					<th scope="row">スレッド名</th>
-					<td>スレ主名</td>
+				<tr th:each="thread : ${threadList}">
+					<th scope="row">${thread.name}</th>
+					<td>${thread.user.name}</td>
+					<td>${thread.createDate}</td>
 				</tr>
 			</tbody>
 		</table>

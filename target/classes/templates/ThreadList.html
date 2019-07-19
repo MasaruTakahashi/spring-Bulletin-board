@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<title>スレッド一覧</title>
+</head>
+<body>
+	<div class="container">
+		<br>
+		<form th:action="@{/threadcreate}" th:object="${threadForm}"
+			method="post">
+			<input type="text" th:field="*{name}" placeholder="スレッド名"> <input
+				type="hidden" th:field="*{userId}" value="${userinfo.id}"> <input
+				type="submit" value="スレッドを作る">
+		</form>
+		<table class="table">
+			<tbody>
+				<tr th:each="thread : ${threadList}">
+					<th scope="row">${thread.name}</th>
+					<td>${thread.user.name}</td>
+					<td>${thread.createDate}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

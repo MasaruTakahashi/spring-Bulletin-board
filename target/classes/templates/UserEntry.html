@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<title>登録画面</title>
+</head>
+<body>
+	<div class="container">
+		<form th:action="@{/entry}" th:object="${userForm}" method="post">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th class="text-center" scope="col"><h3>ログイン</h3></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row"><br>
+							<div class="form-group">
+								<div class="row">
+									<div class="col"></div>
+									<div class="col-9">
+										<label for="loginId">LOGIN ID</label> <input type="text" th:field="*{loginId}"
+											class="form-control">
+											<span th:if="${#fields.hasErrors('*{loginId}')}" th:errors="*{loginId}" class="text-danger"></span>
+									</div>
+									<div class="col"></div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="row">
+									<div class="col"></div>
+									<div class="col-9">
+										<label for="Password">PASSWORD</label> <input type="password" th:field="*{password}"
+											class="form-control">
+											<span th:if="${#fields.hasErrors('*{password}')}" th:errors="*{password}" class="text-danger"></span>
+									</div>
+									<div class="col"></div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="row">
+									<div class="col"></div>
+									<div class="col-9">
+										<label for="Password">PASSWORD(確認)</label> <input
+											type="password" th:field="*{passwordCon}" class="form-control">
+									</div>
+									<div class="col"></div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="row">
+									<div class="col"></div>
+									<div class="col-9">
+										<label for="userName">NAME</label> <input type="text" th:field="*{name}"
+											class="form-control">
+											<span th:if="${#fields.hasErrors('*{name}')}" th:errors="*{name}" class="text-danger"></span>
+									</div>
+									<div class="col"></div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col"></div>
+								<div class="col-5">
+									<input type="submit" class="btn btn-primary btn-block" value="登録">
+								</div>
+								<div class="col"></div>
+							</div></th>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+</body>
+</html>
