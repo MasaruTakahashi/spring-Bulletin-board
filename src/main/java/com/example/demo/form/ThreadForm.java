@@ -6,9 +6,9 @@ import javax.validation.constraints.NotEmpty;
 
 public class ThreadForm implements Serializable{
 
-	@NotEmpty
+	@NotEmpty(message = "文字が入力されてません")
 	private String name;
-	private int userId;
+	private Long id;;
 
 	public String getName() {
 		return name;
@@ -16,11 +16,11 @@ public class ThreadForm implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getUserId() {
-		return userId;
+	public Long getId() {
+		return id;
 	}
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 }

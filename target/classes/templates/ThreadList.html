@@ -13,16 +13,29 @@
 		<br>
 		<form th:action="@{/threadcreate}" th:object="${threadForm}"
 			method="post">
-			<input type="text" th:field="*{name}" placeholder="スレッド名"> <input
-				type="hidden" th:field="*{userId}" value="${userinfo.id}"> <input
-				type="submit" value="スレッドを作る">
+			<div class="row">
+				<div class="col"></div>
+				<div class="col-7">
+					<input type="text" th:field="*{name}" class="form-control">
+					<span th:if="${#fields.hasErrors('*{name}')}" th:errors="*{name}"
+						class="text-danger"></span>
+				</div>
+				<div class="col-2">
+					<input type="submit" class="btn btn-secondary btn-block"
+						value="スレッドを作る">
+				</div>
+				<div class="col"></div>
+			</div>
 		</form>
+		<br>
+		<br>
 		<table class="table">
 			<tbody>
 				<tr th:each="thread : ${threadList}">
-					<th scope="row">${thread.name}</th>
-					<td>${thread.user.name}</td>
-					<td>${thread.createDate}</td>
+					<th scope="row" class="text-center"><a
+						th:href="@{'comment?id=' + ${thread.id}}">[[${thread.name}]]</a></th>
+					<td class="text-right">[[${thread.user.name}]]</td>
+					<td class="text-right">[[${thread.createDate}]]</td>
 				</tr>
 			</tbody>
 		</table>
