@@ -9,7 +9,14 @@ public class CommentForm implements Serializable{
 	@NotEmpty(message = "文字を入力してください")
 	private String detail;
 	private int threadId;
+	private Long id;
 
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getDetail() {
 		return detail;
 	}

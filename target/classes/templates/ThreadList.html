@@ -27,8 +27,7 @@
 				<div class="col"></div>
 			</div>
 		</form>
-		<br>
-		<br>
+		<br> <br>
 		<table class="table">
 			<tbody>
 				<tr th:each="thread : ${threadList}">
@@ -36,6 +35,10 @@
 						th:href="@{'comment?id=' + ${thread.id}}">[[${thread.name}]]</a></th>
 					<td class="text-right">[[${thread.user.name}]]</td>
 					<td class="text-right">[[${thread.createDate}]]</td>
+					<td><a th:if="${userId == thread.userId}"
+						class="btn btn-danger"
+						th:href="@{'/threaddelete?id=' + ${thread.id}}">削除</a>
+					<td>
 				</tr>
 			</tbody>
 		</table>

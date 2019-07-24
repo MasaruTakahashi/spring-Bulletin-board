@@ -20,7 +20,7 @@ public class Comment {
 	private int userId;
 	private String detail;
 	private Date createDate;
-	private int thredId;
+	private int threadId;
 
 	@ManyToOne
 	@JoinColumn(name = "userId", insertable = false,updatable = false)
@@ -50,11 +50,11 @@ public class Comment {
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	public int getThredId() {
-		return thredId;
+	public int getThreadId() {
+		return threadId;
 	}
-	public void setThredId(int thredId) {
-		this.thredId = thredId;
+	public void setThreadId(int threadId) {
+		this.threadId = threadId;
 	}
 	public User getUser() {
 		return user;

@@ -12,19 +12,40 @@
 	<div class="container">
 		<form th:action="@{/comment}" th:object="${commentForm}" method="post">
 			<h1 class="text-center">[[${thread.name}]]</h1>
+			<div class="row">
+			<a th:href="@{/threadList}" class="col-2">スレッド一覧に戻る</a>
+			<div class="col"></div>
+			<div class="col-1">
 			<p class="text-right">
-				[[${thread.user.name}]]<br> <br> <input type="text"
-					th:field="*{detail}"> <span
-					th:if="${#fields.hasErrors('*{detail}')}" th:errors="*{detail}"
-					class="text-danger"></span> <input type="hidden" name="threadId"
-					id="threadId" th:value="${thread.id}"> <input type="submit"
-					class="btn-secondary btn-block" value="投稿する">
+				[[${thread.user.name}]]
+			</div>
+			</div>
+			<br> <br>
+			<div class="row">
+				<div class="col"></div>
+				<div class="col-7">
+					<input type="text" th:field="*{detail}" class="form-control">
+					<span th:if="${#fields.hasErrors('*{detail}')}"
+						th:errors="*{detail}" class="text-danger"></span> <input
+						type="hidden" name="threadId" id="threadId"
+						th:value="${thread.id}">
+				</div>
+				<div class="col-2">
+					<input type="submit" class="btn-secondary btn-block form-control"
+						value="投稿する">
+				</div>
+				<div class="col"></div>
+			</div>
+			<br>
 			<table class="table">
 				<tbody>
 					<tr th:each="comment : ${commentList}">
 						<th scope="row">[[${comment.user.name}]]</th>
 						<td>[[${comment.detail}]]</td>
 						<td>[[${comment.createDate}]]</td>
+						<td><a th:if="${userId == comment.userId}"
+						class="btn btn-danger"
+						th:href="@{'/commentdelete?id=' + ${comment.id}}">削除</a>
 					</tr>
 				</tbody>
 			</table>

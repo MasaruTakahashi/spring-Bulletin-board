@@ -35,6 +35,7 @@ public class ThreadContoroller {
 	@RequestMapping(value = "/threadList", method = RequestMethod.GET)
 	public ModelAndView threadGet(@ModelAttribute ThreadForm threadForm, ModelAndView mav) {
 		List<Thread> threadList = threadRe.findAll();
+		mav.addObject("userId",session.getAttribute("userid"));
 		mav.addObject("threadList", threadList);
 		mav.setViewName("ThreadList");
 		return mav;
@@ -69,6 +70,14 @@ public class ThreadContoroller {
 
 		mav.setViewName("redirect:/threadList");
 		return mav;
+
+	}
+	@RequestMapping(value = "/threaddelete")
+	public ModelAndView deleteThread(ModelAndView mav,@ModelAttribute ThreadForm threadForm) {
+		threadRe.deleteById(threadForm.getId());
+		mav.setViewName("redirect:/threadList");
+		return mav;
+
 
 	}
 }

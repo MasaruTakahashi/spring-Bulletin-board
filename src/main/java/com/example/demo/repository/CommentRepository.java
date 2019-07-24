@@ -11,5 +11,5 @@ import com.example.demo.entity.Comment;
 @Transactional
 public interface CommentRepository extends JpaRepository<Comment, Long>{
 
-	public List<Comment> findByThredId(int thredId);
+	public List<Comment> findByThreadId(int threadId);
 }

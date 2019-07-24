@@ -37,8 +37,9 @@ public class CommentContoroller {
 			@ModelAttribute CommentForm commentForm, ModelAndView mav) {
 		Thread thread = threadRe.findById(threadForm.getId()).get();
 		mav.addObject("thread", thread);
-		List<Comment> comment = commentRe.findByThredId(threadForm.getId().intValue());
+		List<Comment> comment = commentRe.findByThreadId(threadForm.getId().intValue());
 		mav.addObject("commentList", comment);
+		mav.addObject("userId",session.getAttribute("userid"));
 		mav.setViewName("comment");
 		return mav;
 	}
@@ -53,12 +54,21 @@ public class CommentContoroller {
 		}
 		Comment comment = new Comment();
 		comment.setDetail(commentForm.getDetail());
-		comment.setThredId(commentForm.getThreadId());
+		comment.setThreadId(commentForm.getThreadId());
 		comment.setUserId(Integer.parseInt(session.getAttribute("userid").toString()));
 		comment.setCreateDate(new Date());
 
 		commentRe.save(comment);
-		mav.setViewName("redirect:/comment"+"?id="+comment.getThredId());
+		mav.setViewName("redirect:/comment"+"?id="+comment.getThreadId());
 		return mav;
+	}
+
+	@RequestMapping(value = "/commentdelete")
+	public ModelAndView deleteComment(ModelAndView mav,@ModelAttribute CommentForm commentForm) {
+		Comment comment = commentRe.findById(commentForm.getId()).get();
+		commentRe.deleteById(commentForm.getId());
+		mav.setViewName("redirect:/comment"+"?id="+comment.getThreadId());
+		return mav;
+
 	}
 }
